@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pig Game</title>
+    </head>
+    <body>
+        <!-- Option 1 -->    
+        <!--<Pluralsight-Comment></Pluralsight-Comment>-->
+        <script>
+           var PluralsightCommentProto = Object.create(HTMLElement.prototype);
+           
+           PluralsightCommentProto.createdCallback = function(){
+               this.innerHTML = '<h2>Pluralsight Comment</h2><textarea></textarea></br><input type="submit">';
+           };
+            
+            var PluralsightComment = document.registerElement('Pluralsight-Comment',{
+                prototype : PluralsightCommentProto
+            });
+            
+            //Option 2 
+            var comment = new PluralsightComment();
+            //document.body.appendChild(comment);
+            
+            //option 3
+            var comment = document.createElement('Pluralsight-Comment');
+            //document.body.appendChild(comment);
+            
+            //option4
+            //document.body.innerHTML = '<Pluralsight-Comment></Pluralsight-Comment>';
+        </script>
+        <!-- Option 1 -->
+        <!--<button is="pluralsight-button"></button> -->
+        <script>
+           var Proto = Object.create(HTMLButtonElement.prototype);
+           Proto.createdCallback = function(){
+               this.innerHTML = "Pluralsight Button";
+               this.value = "Default Value";
+               this.style.color = "orange";
+           };
+           
+           var PluralsightButton = document.registerElement('pluralsight-button',{
+               prototype: Proto,
+               extends: 'button'
+           });
+           
+           //Option 2
+           // document.body.appendChild(new PluralsightButton());
+           
+           //option 3
+           //var button = document.createElement('button','pluralsight-button');
+           //document.body.appendChild(button);
+            
+           //Option 4
+          // document.body.innerHTML = '<button is="pluralsight-button"></button>';
+        </script>
+        <!--<hello-world></hello-world> -->
+        <script>
+            var HellpWorldProto = Object.create(HTMLElement.prototype);
+            
+            HellpWorldProto.createdCallback = function(){
+               this.innerHTML = '<h1>Hello World</h1>';
+            };
+            
+            HellpWorldProto.attachedCallback = function(){
+               console.log('Attached');  
+            };
+            
+            HellpWorldProto.detachedCallback = function(){
+               console.log('DeAttached');  
+            };
+            
+            HellpWorldProto.attributeChangedCallback = function(attrName,oldVal,newVal){
+                console.log(attrName + ', ' + oldVal + ', ' + newVal)
+            };
+            var Hello = document.registerElement('hello-world',{
+                prototype: HellpWorldProto
+            });
+            
+           // document.querySelector('hello-world').setAttribute('test',1);
+            //document.querySelector('hello-world').remove();
+        </script>
+        
+        <!-- Shadow Dom -->
+        <div id="host"></div>
+        <template>
+            <h1>Hello World from the shadow DOM</h1>
+        </template>
+        <script>
+           var template = document.querySelector('template')
+           var host = document.getElementById('host');
+           var root = host.createShadowRoot();
+           //root.innerHTML = "<h1>Hello World from the shadow DOM</h1>";
+           root.appendChild(document.importNode(template.content,true))
+           console.log(document.querySelector('h1'));
+           console.log(root.querySelector('h1'));
+               
+           
+        </script>
+        
+    </body>
+</html>

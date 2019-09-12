@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pig Game</title>
+    </head>
+    <body>
+      <div id="host">
+          Light DOM
+      </div>
+        
+      <script>
+          var host = document.querySelector('#host');
+          var root1 = host.createShadowRoot();
+          //var root2 = host.createShadowRoot();
+         // var root3 = host.createShadowRoot();
+          root1.innerHTML = '<div>root 1</div>';
+         // root2.innerHTML = '<span>root 2</span><shadow></shadow><content></content>';
+         // root3.innerHTML = '<div>root 3</div><shadow></shadow>';
+          
+         // alert(root2.olderShadowRoot === root1);
+         // alert(host.shadowRoot === root3);
+      </script>
+    </body>
+</html>

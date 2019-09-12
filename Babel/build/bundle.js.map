@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/another.js","../src/main.js"],"names":[],"mappings":";;AAAA,IAAI,WAAW,IAAf;AACA,QAAQ,GAAR,CAAe,QAAf;;;ACDA,IAAI,WAAW,IAAf;AACA,QAAQ,GAAR,CAAe,QAAf","file":"bundle.js","sourcesContent":["let Greeting = 'Hi';\r\nconsole.log(`${Greeting} Another`);","let Greeting = 'Hi';\r\nconsole.log(`${Greeting} Changes on the File`);"]}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pig Game</title>
+    </head>
+    <body>
+       <comment-form>
+          <h1>Tell us what's on your mind!</h1>
+          <p class="message">Fill out this form below. We'll get back to you. Maybe. If we're not too busy</p>
+          <p class="message boring">Blah Blah Blah</p>
+          <p id="footer">Privecy Policy: Saeed Alsharqawi</p>
+          <span>testing - this won't show</span>
+          <input type="button" value="Reset">
+       </comment-form>
+       <template id="commentform">
+          <fieldset>
+             <legend>
+               <content select="h1"></content> 
+             </legend>
+             <content select="p.message:not(.boring)"></content> 
+             <textarea style="width: 400px; height: 200px"></textarea>
+             <br/>
+             <input type="submit" value="Submit Comment">
+             <content select="input[type=button]"></content>
+             <content select="#footer"></content> 
+             <content></content>
+          </fieldset> 
+       </template>
+       <script>
+          var commentProto = Object.create(HTMLElement.prototype);
+          
+          commentProto.createdCallback = function(){
+              var template = document.querySelector('#commentform');
+              var shadow = this.createShadowRoot();
+              shadow.appendChild(document.importNode(template.content,true));
+          }
+          
+          document.registerElement('comment-form', {
+              prototype: commentProto
+          })
+       </script> 
+    </body>
+</html>
